@@ -5543,6 +5543,8 @@ Map<String, dynamic> _$RefreshResponseToJson(RefreshResponse instance) {
 RefreshToken _$RefreshTokenFromJson(Map<String, dynamic> json) {
   return RefreshToken(
     applicationId: json['applicationId'] as String,
+    data: json['data'] as Map<String, dynamic>,
+    id: json['id'] as String,
     insertInstant: json['insertInstant'] as num,
     metaData: json['metaData'] == null
         ? null
@@ -5563,6 +5565,8 @@ Map<String, dynamic> _$RefreshTokenToJson(RefreshToken instance) {
   }
 
   writeNotNull('applicationId', instance.applicationId);
+  writeNotNull('data', instance.data);
+  writeNotNull('id', instance.id);
   writeNotNull('insertInstant', instance.insertInstant);
   writeNotNull('metaData', instance.metaData);
   writeNotNull('startInstant', instance.startInstant);

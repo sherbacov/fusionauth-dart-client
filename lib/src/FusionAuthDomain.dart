@@ -3977,6 +3977,8 @@ class RefreshResponse {
 @JsonSerializable()
 class RefreshToken {
   String applicationId;
+  Map<String, dynamic> data;
+  String id;
   num insertInstant;
   MetaData metaData;
   num startInstant;
@@ -3985,6 +3987,8 @@ class RefreshToken {
 
   RefreshToken({
       this.applicationId,
+      this.data,
+      this.id,
       this.insertInstant,
       this.metaData,
       this.startInstant,
