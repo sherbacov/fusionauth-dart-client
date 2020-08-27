@@ -185,6 +185,7 @@ class Application {
   AuthenticationTokenConfiguration authenticationTokenConfiguration;
   CleanSpeakConfiguration cleanSpeakConfiguration;
   Map<String, dynamic> data;
+  EmailConfiguration emailConfiguration;
   String id;
   num insertInstant;
   JWTConfiguration jwtConfiguration;
@@ -207,6 +208,7 @@ class Application {
       this.authenticationTokenConfiguration,
       this.cleanSpeakConfiguration,
       this.data,
+      this.emailConfiguration,
       this.id,
       this.insertInstant,
       this.jwtConfiguration,
@@ -1170,6 +1172,24 @@ class EmailConfiguration {
 }
 
 @JsonSerializable()
+class EmailConfiguration {
+  String emailVerificationEmailTemplateId;
+  String forgotPasswordEmailTemplateId;
+  String passwordlessEmailTemplateId;
+  String setPasswordEmailTemplateId;
+
+  EmailConfiguration({
+      this.emailVerificationEmailTemplateId,
+      this.forgotPasswordEmailTemplateId,
+      this.passwordlessEmailTemplateId,
+      this.setPasswordEmailTemplateId
+  });
+
+  factory EmailConfiguration.fromJson(Map<String, dynamic> json) => _$EmailConfigurationFromJson(json);
+  Map<String, dynamic> toJson() => _$EmailConfigurationToJson(this);
+}
+
+@JsonSerializable()
 class EmailPlus extends Enableable {
   String emailTemplateId;
   num maximumTimeToSendEmailInHours;
@@ -1822,6 +1842,7 @@ enum FamilyRole {
 /// @author Brian Pontarelli
 @JsonSerializable()
 class ForgotPasswordRequest {
+  String applicationId;
   String changePasswordId;
   String email;
   String loginId;
@@ -1830,6 +1851,7 @@ class ForgotPasswordRequest {
   String username;
 
   ForgotPasswordRequest({
+      this.applicationId,
       this.changePasswordId,
       this.email,
       this.loginId,
@@ -4431,6 +4453,18 @@ class SortField {
   Map<String, dynamic> toJson() => _$SortFieldToJson(this);
 }
 
+@JsonSerializable()
+class StatusConfiguration {
+  bool requireAuthentication;
+
+  StatusConfiguration({
+      this.requireAuthentication
+  });
+
+  factory StatusConfiguration.fromJson(Map<String, dynamic> json) => _$StatusConfigurationFromJson(json);
+  Map<String, dynamic> toJson() => _$StatusConfigurationToJson(this);
+}
+
 /// @author Brian Pontarelli
 @JsonSerializable()
 class SystemConfiguration {
@@ -4444,6 +4478,7 @@ class SystemConfiguration {
   num lastUpdateInstant;
   LoginRecordConfiguration loginRecordConfiguration;
   String reportTimezone;
+  StatusConfiguration statusConfiguration;
   UIConfiguration uiConfiguration;
 
   SystemConfiguration({
@@ -4457,6 +4492,7 @@ class SystemConfiguration {
       this.lastUpdateInstant,
       this.loginRecordConfiguration,
       this.reportTimezone,
+      this.statusConfiguration,
       this.uiConfiguration
   });
 

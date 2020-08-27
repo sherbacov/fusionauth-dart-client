@@ -279,6 +279,10 @@ Application _$ApplicationFromJson(Map<String, dynamic> json) {
         : CleanSpeakConfiguration.fromJson(
             json['cleanSpeakConfiguration'] as Map<String, dynamic>),
     data: json['data'] as Map<String, dynamic>,
+    emailConfiguration: json['emailConfiguration'] == null
+        ? null
+        : EmailConfiguration.fromJson(
+            json['emailConfiguration'] as Map<String, dynamic>),
     id: json['id'] as String,
     insertInstant: json['insertInstant'] as num,
     jwtConfiguration: json['jwtConfiguration'] == null
@@ -337,6 +341,7 @@ Map<String, dynamic> _$ApplicationToJson(Application instance) {
       instance.authenticationTokenConfiguration);
   writeNotNull('cleanSpeakConfiguration', instance.cleanSpeakConfiguration);
   writeNotNull('data', instance.data);
+  writeNotNull('emailConfiguration', instance.emailConfiguration);
   writeNotNull('id', instance.id);
   writeNotNull('insertInstant', instance.insertInstant);
   writeNotNull('jwtConfiguration', instance.jwtConfiguration);
@@ -1550,6 +1555,37 @@ const _$EmailSecurityTypeEnumMap = {
   EmailSecurityType.TLS: 'TLS',
 };
 
+EmailConfiguration _$EmailConfigurationFromJson(Map<String, dynamic> json) {
+  return EmailConfiguration(
+    emailVerificationEmailTemplateId:
+        json['emailVerificationEmailTemplateId'] as String,
+    forgotPasswordEmailTemplateId:
+        json['forgotPasswordEmailTemplateId'] as String,
+    passwordlessEmailTemplateId: json['passwordlessEmailTemplateId'] as String,
+    setPasswordEmailTemplateId: json['setPasswordEmailTemplateId'] as String,
+  );
+}
+
+Map<String, dynamic> _$EmailConfigurationToJson(EmailConfiguration instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('emailVerificationEmailTemplateId',
+      instance.emailVerificationEmailTemplateId);
+  writeNotNull(
+      'forgotPasswordEmailTemplateId', instance.forgotPasswordEmailTemplateId);
+  writeNotNull(
+      'passwordlessEmailTemplateId', instance.passwordlessEmailTemplateId);
+  writeNotNull(
+      'setPasswordEmailTemplateId', instance.setPasswordEmailTemplateId);
+  return val;
+}
+
 EmailPlus _$EmailPlusFromJson(Map<String, dynamic> json) {
   return EmailPlus(
     emailTemplateId: json['emailTemplateId'] as String,
@@ -2525,6 +2561,7 @@ Map<String, dynamic> _$FamilyResponseToJson(FamilyResponse instance) {
 ForgotPasswordRequest _$ForgotPasswordRequestFromJson(
     Map<String, dynamic> json) {
   return ForgotPasswordRequest(
+    applicationId: json['applicationId'] as String,
     changePasswordId: json['changePasswordId'] as String,
     email: json['email'] as String,
     loginId: json['loginId'] as String,
@@ -2544,6 +2581,7 @@ Map<String, dynamic> _$ForgotPasswordRequestToJson(
     }
   }
 
+  writeNotNull('applicationId', instance.applicationId);
   writeNotNull('changePasswordId', instance.changePasswordId);
   writeNotNull('email', instance.email);
   writeNotNull('loginId', instance.loginId);
@@ -6215,6 +6253,25 @@ const _$SortEnumMap = {
   Sort.desc: 'desc',
 };
 
+StatusConfiguration _$StatusConfigurationFromJson(Map<String, dynamic> json) {
+  return StatusConfiguration(
+    requireAuthentication: json['requireAuthentication'] as bool,
+  );
+}
+
+Map<String, dynamic> _$StatusConfigurationToJson(StatusConfiguration instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('requireAuthentication', instance.requireAuthentication);
+  return val;
+}
+
 SystemConfiguration _$SystemConfigurationFromJson(Map<String, dynamic> json) {
   return SystemConfiguration(
     auditLogConfiguration: json['auditLogConfiguration'] == null
@@ -6239,6 +6296,10 @@ SystemConfiguration _$SystemConfigurationFromJson(Map<String, dynamic> json) {
         : LoginRecordConfiguration.fromJson(
             json['loginRecordConfiguration'] as Map<String, dynamic>),
     reportTimezone: json['reportTimezone'] as String,
+    statusConfiguration: json['statusConfiguration'] == null
+        ? null
+        : StatusConfiguration.fromJson(
+            json['statusConfiguration'] as Map<String, dynamic>),
     uiConfiguration: json['uiConfiguration'] == null
         ? null
         : UIConfiguration.fromJson(
@@ -6265,6 +6326,7 @@ Map<String, dynamic> _$SystemConfigurationToJson(SystemConfiguration instance) {
   writeNotNull('lastUpdateInstant', instance.lastUpdateInstant);
   writeNotNull('loginRecordConfiguration', instance.loginRecordConfiguration);
   writeNotNull('reportTimezone', instance.reportTimezone);
+  writeNotNull('statusConfiguration', instance.statusConfiguration);
   writeNotNull('uiConfiguration', instance.uiConfiguration);
   return val;
 }
