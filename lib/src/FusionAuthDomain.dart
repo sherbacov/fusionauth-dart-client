@@ -1132,6 +1132,25 @@ class EmailAddress {
   Map<String, dynamic> toJson() => _$EmailAddressToJson(this);
 }
 
+/// @author Daniel DeGroff
+@JsonSerializable()
+class EmailConfiguration {
+  String emailVerificationEmailTemplateId;
+  String forgotPasswordEmailTemplateId;
+  String passwordlessEmailTemplateId;
+  String setPasswordEmailTemplateId;
+
+  EmailConfiguration({
+      this.emailVerificationEmailTemplateId,
+      this.forgotPasswordEmailTemplateId,
+      this.passwordlessEmailTemplateId,
+      this.setPasswordEmailTemplateId
+  });
+
+  factory EmailConfiguration.fromJson(Map<String, dynamic> json) => _$EmailConfigurationFromJson(json);
+  Map<String, dynamic> toJson() => _$EmailConfigurationToJson(this);
+}
+
 /// @author Brian Pontarelli
 @JsonSerializable()
 class EmailConfiguration {
@@ -1165,24 +1184,6 @@ class EmailConfiguration {
       this.verificationEmailTemplateId,
       this.verifyEmail,
       this.verifyEmailWhenChanged
-  });
-
-  factory EmailConfiguration.fromJson(Map<String, dynamic> json) => _$EmailConfigurationFromJson(json);
-  Map<String, dynamic> toJson() => _$EmailConfigurationToJson(this);
-}
-
-@JsonSerializable()
-class EmailConfiguration {
-  String emailVerificationEmailTemplateId;
-  String forgotPasswordEmailTemplateId;
-  String passwordlessEmailTemplateId;
-  String setPasswordEmailTemplateId;
-
-  EmailConfiguration({
-      this.emailVerificationEmailTemplateId,
-      this.forgotPasswordEmailTemplateId,
-      this.passwordlessEmailTemplateId,
-      this.setPasswordEmailTemplateId
   });
 
   factory EmailConfiguration.fromJson(Map<String, dynamic> json) => _$EmailConfigurationFromJson(json);
@@ -4469,7 +4470,6 @@ class StatusConfiguration {
 @JsonSerializable()
 class SystemConfiguration {
   AuditLogConfiguration auditLogConfiguration;
-  String cookieEncryptionIV;
   String cookieEncryptionKey;
   CORSConfiguration corsConfiguration;
   Map<String, dynamic> data;
@@ -4483,7 +4483,6 @@ class SystemConfiguration {
 
   SystemConfiguration({
       this.auditLogConfiguration,
-      this.cookieEncryptionIV,
       this.cookieEncryptionKey,
       this.corsConfiguration,
       this.data,
