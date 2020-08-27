@@ -185,7 +185,7 @@ class Application {
   AuthenticationTokenConfiguration authenticationTokenConfiguration;
   CleanSpeakConfiguration cleanSpeakConfiguration;
   Map<String, dynamic> data;
-  EmailConfiguration emailConfiguration;
+  ApplicationEmailConfiguration emailConfiguration;
   String id;
   num insertInstant;
   JWTConfiguration jwtConfiguration;
@@ -229,6 +229,24 @@ class Application {
 
   factory Application.fromJson(Map<String, dynamic> json) => _$ApplicationFromJson(json);
   Map<String, dynamic> toJson() => _$ApplicationToJson(this);
+}
+
+@JsonSerializable()
+class ApplicationEmailConfiguration {
+  String emailVerificationEmailTemplateId;
+  String forgotPasswordEmailTemplateId;
+  String passwordlessEmailTemplateId;
+  String setPasswordEmailTemplateId;
+
+  ApplicationEmailConfiguration({
+      this.emailVerificationEmailTemplateId,
+      this.forgotPasswordEmailTemplateId,
+      this.passwordlessEmailTemplateId,
+      this.setPasswordEmailTemplateId
+  });
+
+  factory ApplicationEmailConfiguration.fromJson(Map<String, dynamic> json) => _$ApplicationEmailConfigurationFromJson(json);
+  Map<String, dynamic> toJson() => _$ApplicationEmailConfigurationToJson(this);
 }
 
 /// Events that are bound to applications.
@@ -1130,25 +1148,6 @@ class EmailAddress {
 
   factory EmailAddress.fromJson(Map<String, dynamic> json) => _$EmailAddressFromJson(json);
   Map<String, dynamic> toJson() => _$EmailAddressToJson(this);
-}
-
-/// @author Daniel DeGroff
-@JsonSerializable()
-class EmailConfiguration {
-  String emailVerificationEmailTemplateId;
-  String forgotPasswordEmailTemplateId;
-  String passwordlessEmailTemplateId;
-  String setPasswordEmailTemplateId;
-
-  EmailConfiguration({
-      this.emailVerificationEmailTemplateId,
-      this.forgotPasswordEmailTemplateId,
-      this.passwordlessEmailTemplateId,
-      this.setPasswordEmailTemplateId
-  });
-
-  factory EmailConfiguration.fromJson(Map<String, dynamic> json) => _$EmailConfigurationFromJson(json);
-  Map<String, dynamic> toJson() => _$EmailConfigurationToJson(this);
 }
 
 /// @author Brian Pontarelli
