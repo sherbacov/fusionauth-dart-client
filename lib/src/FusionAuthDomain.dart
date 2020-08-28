@@ -4470,18 +4470,6 @@ class SortField {
   Map<String, dynamic> toJson() => _$SortFieldToJson(this);
 }
 
-@JsonSerializable()
-class StatusConfiguration {
-  bool requireAuthentication;
-
-  StatusConfiguration({
-      this.requireAuthentication
-  });
-
-  factory StatusConfiguration.fromJson(Map<String, dynamic> json) => _$StatusConfigurationFromJson(json);
-  Map<String, dynamic> toJson() => _$StatusConfigurationToJson(this);
-}
-
 /// @author Brian Pontarelli
 @JsonSerializable()
 class SystemConfiguration {
@@ -4494,7 +4482,6 @@ class SystemConfiguration {
   num lastUpdateInstant;
   LoginRecordConfiguration loginRecordConfiguration;
   String reportTimezone;
-  StatusConfiguration statusConfiguration;
   UIConfiguration uiConfiguration;
 
   SystemConfiguration({
@@ -4507,7 +4494,6 @@ class SystemConfiguration {
       this.lastUpdateInstant,
       this.loginRecordConfiguration,
       this.reportTimezone,
-      this.statusConfiguration,
       this.uiConfiguration
   });
 

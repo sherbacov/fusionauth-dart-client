@@ -6281,25 +6281,6 @@ const _$SortEnumMap = {
   Sort.desc: 'desc',
 };
 
-StatusConfiguration _$StatusConfigurationFromJson(Map<String, dynamic> json) {
-  return StatusConfiguration(
-    requireAuthentication: json['requireAuthentication'] as bool,
-  );
-}
-
-Map<String, dynamic> _$StatusConfigurationToJson(StatusConfiguration instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('requireAuthentication', instance.requireAuthentication);
-  return val;
-}
-
 SystemConfiguration _$SystemConfigurationFromJson(Map<String, dynamic> json) {
   return SystemConfiguration(
     auditLogConfiguration: json['auditLogConfiguration'] == null
@@ -6323,10 +6304,6 @@ SystemConfiguration _$SystemConfigurationFromJson(Map<String, dynamic> json) {
         : LoginRecordConfiguration.fromJson(
             json['loginRecordConfiguration'] as Map<String, dynamic>),
     reportTimezone: json['reportTimezone'] as String,
-    statusConfiguration: json['statusConfiguration'] == null
-        ? null
-        : StatusConfiguration.fromJson(
-            json['statusConfiguration'] as Map<String, dynamic>),
     uiConfiguration: json['uiConfiguration'] == null
         ? null
         : UIConfiguration.fromJson(
@@ -6352,7 +6329,6 @@ Map<String, dynamic> _$SystemConfigurationToJson(SystemConfiguration instance) {
   writeNotNull('lastUpdateInstant', instance.lastUpdateInstant);
   writeNotNull('loginRecordConfiguration', instance.loginRecordConfiguration);
   writeNotNull('reportTimezone', instance.reportTimezone);
-  writeNotNull('statusConfiguration', instance.statusConfiguration);
   writeNotNull('uiConfiguration', instance.uiConfiguration);
   return val;
 }
