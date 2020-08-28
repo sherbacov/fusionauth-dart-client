@@ -281,7 +281,7 @@ Application _$ApplicationFromJson(Map<String, dynamic> json) {
     data: json['data'] as Map<String, dynamic>,
     emailConfiguration: json['emailConfiguration'] == null
         ? null
-        : EmailConfiguration.fromJson(
+        : ApplicationEmailConfiguration.fromJson(
             json['emailConfiguration'] as Map<String, dynamic>),
     id: json['id'] as String,
     insertInstant: json['insertInstant'] as num,
@@ -359,6 +359,39 @@ Map<String, dynamic> _$ApplicationToJson(Application instance) {
   writeNotNull(
       'verificationEmailTemplateId', instance.verificationEmailTemplateId);
   writeNotNull('verifyRegistration', instance.verifyRegistration);
+  return val;
+}
+
+ApplicationEmailConfiguration _$ApplicationEmailConfigurationFromJson(
+    Map<String, dynamic> json) {
+  return ApplicationEmailConfiguration(
+    emailVerificationEmailTemplateId:
+        json['emailVerificationEmailTemplateId'] as String,
+    forgotPasswordEmailTemplateId:
+        json['forgotPasswordEmailTemplateId'] as String,
+    passwordlessEmailTemplateId: json['passwordlessEmailTemplateId'] as String,
+    setPasswordEmailTemplateId: json['setPasswordEmailTemplateId'] as String,
+  );
+}
+
+Map<String, dynamic> _$ApplicationEmailConfigurationToJson(
+    ApplicationEmailConfiguration instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('emailVerificationEmailTemplateId',
+      instance.emailVerificationEmailTemplateId);
+  writeNotNull(
+      'forgotPasswordEmailTemplateId', instance.forgotPasswordEmailTemplateId);
+  writeNotNull(
+      'passwordlessEmailTemplateId', instance.passwordlessEmailTemplateId);
+  writeNotNull(
+      'setPasswordEmailTemplateId', instance.setPasswordEmailTemplateId);
   return val;
 }
 
@@ -1554,37 +1587,6 @@ const _$EmailSecurityTypeEnumMap = {
   EmailSecurityType.SSL: 'SSL',
   EmailSecurityType.TLS: 'TLS',
 };
-
-EmailConfiguration _$EmailConfigurationFromJson(Map<String, dynamic> json) {
-  return EmailConfiguration(
-    emailVerificationEmailTemplateId:
-        json['emailVerificationEmailTemplateId'] as String,
-    forgotPasswordEmailTemplateId:
-        json['forgotPasswordEmailTemplateId'] as String,
-    passwordlessEmailTemplateId: json['passwordlessEmailTemplateId'] as String,
-    setPasswordEmailTemplateId: json['setPasswordEmailTemplateId'] as String,
-  );
-}
-
-Map<String, dynamic> _$EmailConfigurationToJson(EmailConfiguration instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('emailVerificationEmailTemplateId',
-      instance.emailVerificationEmailTemplateId);
-  writeNotNull(
-      'forgotPasswordEmailTemplateId', instance.forgotPasswordEmailTemplateId);
-  writeNotNull(
-      'passwordlessEmailTemplateId', instance.passwordlessEmailTemplateId);
-  writeNotNull(
-      'setPasswordEmailTemplateId', instance.setPasswordEmailTemplateId);
-  return val;
-}
 
 EmailPlus _$EmailPlusFromJson(Map<String, dynamic> json) {
   return EmailPlus(
@@ -5613,6 +5615,32 @@ Map<String, dynamic> _$RefreshTokenToJson(RefreshToken instance) {
   return val;
 }
 
+RefreshTokenImportRequest _$RefreshTokenImportRequestFromJson(
+    Map<String, dynamic> json) {
+  return RefreshTokenImportRequest(
+    refreshTokens: (json['refreshTokens'] as List)
+        ?.map((e) =>
+            e == null ? null : RefreshToken.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    validateDbConstraints: json['validateDbConstraints'] as bool,
+  );
+}
+
+Map<String, dynamic> _$RefreshTokenImportRequestToJson(
+    RefreshTokenImportRequest instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('refreshTokens', instance.refreshTokens);
+  writeNotNull('validateDbConstraints', instance.validateDbConstraints);
+  return val;
+}
+
 RefreshTokenRevocationPolicy _$RefreshTokenRevocationPolicyFromJson(
     Map<String, dynamic> json) {
   return RefreshTokenRevocationPolicy(
@@ -6278,7 +6306,6 @@ SystemConfiguration _$SystemConfigurationFromJson(Map<String, dynamic> json) {
         ? null
         : AuditLogConfiguration.fromJson(
             json['auditLogConfiguration'] as Map<String, dynamic>),
-    cookieEncryptionIV: json['cookieEncryptionIV'] as String,
     cookieEncryptionKey: json['cookieEncryptionKey'] as String,
     corsConfiguration: json['corsConfiguration'] == null
         ? null
@@ -6317,7 +6344,6 @@ Map<String, dynamic> _$SystemConfigurationToJson(SystemConfiguration instance) {
   }
 
   writeNotNull('auditLogConfiguration', instance.auditLogConfiguration);
-  writeNotNull('cookieEncryptionIV', instance.cookieEncryptionIV);
   writeNotNull('cookieEncryptionKey', instance.cookieEncryptionKey);
   writeNotNull('corsConfiguration', instance.corsConfiguration);
   writeNotNull('data', instance.data);

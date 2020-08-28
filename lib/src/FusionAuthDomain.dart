@@ -4030,6 +4030,23 @@ enum RefreshTokenExpirationPolicy {
   SlidingWindow
 }
 
+/// Refresh Token Import request.
+///
+/// @author Brett Guy
+@JsonSerializable()
+class RefreshTokenImportRequest {
+  List<RefreshToken> refreshTokens;
+  bool validateDbConstraints;
+
+  RefreshTokenImportRequest({
+      this.refreshTokens,
+      this.validateDbConstraints
+  });
+
+  factory RefreshTokenImportRequest.fromJson(Map<String, dynamic> json) => _$RefreshTokenImportRequestFromJson(json);
+  Map<String, dynamic> toJson() => _$RefreshTokenImportRequestToJson(this);
+}
+
 /// @author Daniel DeGroff
 @JsonSerializable()
 class RefreshTokenRevocationPolicy {
