@@ -4249,9 +4249,11 @@ class SAMLv2Configuration extends Enableable {
   List<String> authorizedRedirectURLs;
   String callbackURL;
   bool debug;
+  String defaultKeyId;
   String issuer;
   String keyId;
   String logoutURL;
+  bool requireSignature;
   CanonicalizationMethod xmlSignatureC14nMethod;
 
   SAMLv2Configuration({
@@ -4259,9 +4261,11 @@ class SAMLv2Configuration extends Enableable {
       this.authorizedRedirectURLs,
       this.callbackURL,
       this.debug,
+      this.defaultKeyId,
       this.issuer,
       this.keyId,
       this.logoutURL,
+      this.requireSignature,
       this.xmlSignatureC14nMethod
   });
 

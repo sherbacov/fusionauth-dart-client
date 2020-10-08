@@ -5935,9 +5935,11 @@ SAMLv2Configuration _$SAMLv2ConfigurationFromJson(Map<String, dynamic> json) {
         ?.toList(),
     callbackURL: json['callbackURL'] as String,
     debug: json['debug'] as bool,
+    defaultKeyId: json['defaultKeyId'] as String,
     issuer: json['issuer'] as String,
     keyId: json['keyId'] as String,
     logoutURL: json['logoutURL'] as String,
+    requireSignature: json['requireSignature'] as bool,
     xmlSignatureC14nMethod: _$enumDecodeNullable(
         _$CanonicalizationMethodEnumMap, json['xmlSignatureC14nMethod']),
   )..enabled = json['enabled'] as bool;
@@ -5957,9 +5959,11 @@ Map<String, dynamic> _$SAMLv2ConfigurationToJson(SAMLv2Configuration instance) {
   writeNotNull('authorizedRedirectURLs', instance.authorizedRedirectURLs);
   writeNotNull('callbackURL', instance.callbackURL);
   writeNotNull('debug', instance.debug);
+  writeNotNull('defaultKeyId', instance.defaultKeyId);
   writeNotNull('issuer', instance.issuer);
   writeNotNull('keyId', instance.keyId);
   writeNotNull('logoutURL', instance.logoutURL);
+  writeNotNull('requireSignature', instance.requireSignature);
   writeNotNull('xmlSignatureC14nMethod',
       _$CanonicalizationMethodEnumMap[instance.xmlSignatureC14nMethod]);
   return val;
