@@ -4246,6 +4246,7 @@ class SAMLv2ApplicationConfiguration extends BaseIdentityProviderApplicationConf
 @JsonSerializable()
 class SAMLv2Configuration extends Enableable {
   String audience;
+  List<String> authorizedRedirectURLs;
   String callbackURL;
   bool debug;
   String issuer;
@@ -4255,6 +4256,7 @@ class SAMLv2Configuration extends Enableable {
 
   SAMLv2Configuration({
       this.audience,
+      this.authorizedRedirectURLs,
       this.callbackURL,
       this.debug,
       this.issuer,

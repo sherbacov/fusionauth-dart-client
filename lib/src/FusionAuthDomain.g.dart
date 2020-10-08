@@ -5930,6 +5930,9 @@ Map<String, dynamic> _$SAMLv2ApplicationConfigurationToJson(
 SAMLv2Configuration _$SAMLv2ConfigurationFromJson(Map<String, dynamic> json) {
   return SAMLv2Configuration(
     audience: json['audience'] as String,
+    authorizedRedirectURLs: (json['authorizedRedirectURLs'] as List)
+        ?.map((e) => e as String)
+        ?.toList(),
     callbackURL: json['callbackURL'] as String,
     debug: json['debug'] as bool,
     issuer: json['issuer'] as String,
@@ -5951,6 +5954,7 @@ Map<String, dynamic> _$SAMLv2ConfigurationToJson(SAMLv2Configuration instance) {
 
   writeNotNull('enabled', instance.enabled);
   writeNotNull('audience', instance.audience);
+  writeNotNull('authorizedRedirectURLs', instance.authorizedRedirectURLs);
   writeNotNull('callbackURL', instance.callbackURL);
   writeNotNull('debug', instance.debug);
   writeNotNull('issuer', instance.issuer);
