@@ -4285,6 +4285,8 @@ class SAMLv2IdentityProvider extends BaseIdentityProvider<SAMLv2ApplicationConfi
   String idpEndpoint;
   String issuer;
   String keyId;
+  String requestSigningKeyId;
+  bool signRequest;
   bool useNameIdForEmail;
 
   SAMLv2IdentityProvider({
@@ -4295,6 +4297,8 @@ class SAMLv2IdentityProvider extends BaseIdentityProvider<SAMLv2ApplicationConfi
       this.idpEndpoint,
       this.issuer,
       this.keyId,
+      this.requestSigningKeyId,
+      this.signRequest,
       this.useNameIdForEmail
   });
 

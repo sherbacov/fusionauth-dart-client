@@ -5935,11 +5935,11 @@ SAMLv2Configuration _$SAMLv2ConfigurationFromJson(Map<String, dynamic> json) {
         ?.toList(),
     callbackURL: json['callbackURL'] as String,
     debug: json['debug'] as bool,
-    defaultKeyId: json['defaultKeyId'] as String,
+    defaultVerificationKeyId: json['defaultVerificationKeyId'] as String,
     issuer: json['issuer'] as String,
     keyId: json['keyId'] as String,
     logoutURL: json['logoutURL'] as String,
-    requireSignature: json['requireSignature'] as bool,
+    requireSignedRequests: json['requireSignedRequests'] as bool,
     xmlSignatureC14nMethod: _$enumDecodeNullable(
         _$CanonicalizationMethodEnumMap, json['xmlSignatureC14nMethod']),
   )..enabled = json['enabled'] as bool;
@@ -5959,11 +5959,11 @@ Map<String, dynamic> _$SAMLv2ConfigurationToJson(SAMLv2Configuration instance) {
   writeNotNull('authorizedRedirectURLs', instance.authorizedRedirectURLs);
   writeNotNull('callbackURL', instance.callbackURL);
   writeNotNull('debug', instance.debug);
-  writeNotNull('defaultKeyId', instance.defaultKeyId);
+  writeNotNull('defaultVerificationKeyId', instance.defaultVerificationKeyId);
   writeNotNull('issuer', instance.issuer);
   writeNotNull('keyId', instance.keyId);
   writeNotNull('logoutURL', instance.logoutURL);
-  writeNotNull('requireSignature', instance.requireSignature);
+  writeNotNull('requireSignedRequests', instance.requireSignedRequests);
   writeNotNull('xmlSignatureC14nMethod',
       _$CanonicalizationMethodEnumMap[instance.xmlSignatureC14nMethod]);
   return val;
@@ -5986,6 +5986,8 @@ SAMLv2IdentityProvider _$SAMLv2IdentityProviderFromJson(
     idpEndpoint: json['idpEndpoint'] as String,
     issuer: json['issuer'] as String,
     keyId: json['keyId'] as String,
+    requestSigningKeyId: json['requestSigningKeyId'] as String,
+    signRequest: json['signRequest'] as bool,
     useNameIdForEmail: json['useNameIdForEmail'] as bool,
   )
     ..enabled = json['enabled'] as bool
@@ -6035,6 +6037,8 @@ Map<String, dynamic> _$SAMLv2IdentityProviderToJson(
   writeNotNull('idpEndpoint', instance.idpEndpoint);
   writeNotNull('issuer', instance.issuer);
   writeNotNull('keyId', instance.keyId);
+  writeNotNull('requestSigningKeyId', instance.requestSigningKeyId);
+  writeNotNull('signRequest', instance.signRequest);
   writeNotNull('useNameIdForEmail', instance.useNameIdForEmail);
   return val;
 }
