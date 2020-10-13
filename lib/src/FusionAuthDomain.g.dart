@@ -5086,6 +5086,7 @@ OpenIdConnectIdentityProvider _$OpenIdConnectIdentityProviderFromJson(
         ? null
         : IdentityProviderOauth2Configuration.fromJson(
             json['oauth2'] as Map<String, dynamic>),
+    post: json['post'] as bool,
   )
     ..enabled = json['enabled'] as bool
     ..applicationConfiguration =
@@ -5131,6 +5132,7 @@ Map<String, dynamic> _$OpenIdConnectIdentityProviderToJson(
   writeNotNull('buttonText', instance.buttonText);
   writeNotNull('domains', instance.domains?.toList());
   writeNotNull('oauth2', instance.oauth2);
+  writeNotNull('post', instance.post);
   return val;
 }
 
@@ -5421,6 +5423,15 @@ Map<String, dynamic> _$PendingResponseToJson(PendingResponse instance) {
   writeNotNull('users', instance.users);
   return val;
 }
+
+PostableIdentityProvider _$PostableIdentityProviderFromJson(
+    Map<String, dynamic> json) {
+  return PostableIdentityProvider();
+}
+
+Map<String, dynamic> _$PostableIdentityProviderToJson(
+        PostableIdentityProvider instance) =>
+    <String, dynamic>{};
 
 PreviewRequest _$PreviewRequestFromJson(Map<String, dynamic> json) {
   return PreviewRequest(
@@ -5986,9 +5997,12 @@ SAMLv2IdentityProvider _$SAMLv2IdentityProviderFromJson(
     idpEndpoint: json['idpEndpoint'] as String,
     issuer: json['issuer'] as String,
     keyId: json['keyId'] as String,
+    post: json['post'] as bool,
     requestSigningKeyId: json['requestSigningKeyId'] as String,
     signRequest: json['signRequest'] as bool,
     useNameIdForEmail: json['useNameIdForEmail'] as bool,
+    xmlSignatureC14nMethod: _$enumDecodeNullable(
+        _$CanonicalizationMethodEnumMap, json['xmlSignatureC14nMethod']),
   )
     ..enabled = json['enabled'] as bool
     ..applicationConfiguration =
@@ -6037,9 +6051,12 @@ Map<String, dynamic> _$SAMLv2IdentityProviderToJson(
   writeNotNull('idpEndpoint', instance.idpEndpoint);
   writeNotNull('issuer', instance.issuer);
   writeNotNull('keyId', instance.keyId);
+  writeNotNull('post', instance.post);
   writeNotNull('requestSigningKeyId', instance.requestSigningKeyId);
   writeNotNull('signRequest', instance.signRequest);
   writeNotNull('useNameIdForEmail', instance.useNameIdForEmail);
+  writeNotNull('xmlSignatureC14nMethod',
+      _$CanonicalizationMethodEnumMap[instance.xmlSignatureC14nMethod]);
   return val;
 }
 
