@@ -3701,14 +3701,14 @@ class OpenIdConnectIdentityProvider extends BaseIdentityProvider<OpenIdConnectAp
   String buttonText;
   Set<String> domains;
   IdentityProviderOauth2Configuration oauth2;
-  bool post;
+  bool postRequest;
 
   OpenIdConnectIdentityProvider({
       this.buttonImageURL,
       this.buttonText,
       this.domains,
       this.oauth2,
-      this.post
+      this.postRequest
   });
 
   factory OpenIdConnectIdentityProvider.fromJson(Map<String, dynamic> json) => _$OpenIdConnectIdentityProviderFromJson(json);
@@ -3891,12 +3891,12 @@ class PendingResponse {
 ///
 /// @author Brian Pontarelli
 @JsonSerializable()
-class PostableIdentityProvider {
+class PostBindingEnabledIdentityProvider {
 
-  PostableIdentityProvider();
+  PostBindingEnabledIdentityProvider();
 
-  factory PostableIdentityProvider.fromJson(Map<String, dynamic> json) => _$PostableIdentityProviderFromJson(json);
-  Map<String, dynamic> toJson() => _$PostableIdentityProviderToJson(this);
+  factory PostBindingEnabledIdentityProvider.fromJson(Map<String, dynamic> json) => _$PostBindingEnabledIdentityProviderFromJson(json);
+  Map<String, dynamic> toJson() => _$PostBindingEnabledIdentityProviderToJson(this);
 }
 
 /// @author Brian Pontarelli
@@ -4302,7 +4302,7 @@ class SAMLv2IdentityProvider extends BaseIdentityProvider<SAMLv2ApplicationConfi
   String idpEndpoint;
   String issuer;
   String keyId;
-  bool post;
+  bool postRequest;
   String requestSigningKeyId;
   bool signRequest;
   bool useNameIdForEmail;
@@ -4316,7 +4316,7 @@ class SAMLv2IdentityProvider extends BaseIdentityProvider<SAMLv2ApplicationConfi
       this.idpEndpoint,
       this.issuer,
       this.keyId,
-      this.post,
+      this.postRequest,
       this.requestSigningKeyId,
       this.signRequest,
       this.useNameIdForEmail,
