@@ -3887,18 +3887,6 @@ class PendingResponse {
   Map<String, dynamic> toJson() => _$PendingResponseToJson(this);
 }
 
-/// Helper interface that indicates an identity provider can be federated to using the HTTP POST method.
-///
-/// @author Brian Pontarelli
-@JsonSerializable()
-class PostBindingEnabledIdentityProvider {
-
-  PostBindingEnabledIdentityProvider();
-
-  factory PostBindingEnabledIdentityProvider.fromJson(Map<String, dynamic> json) => _$PostBindingEnabledIdentityProviderFromJson(json);
-  Map<String, dynamic> toJson() => _$PostBindingEnabledIdentityProviderToJson(this);
-}
-
 /// @author Brian Pontarelli
 @JsonSerializable()
 class PreviewRequest {
@@ -4503,6 +4491,18 @@ class SortField {
 
   factory SortField.fromJson(Map<String, dynamic> json) => _$SortFieldFromJson(json);
   Map<String, dynamic> toJson() => _$SortFieldToJson(this);
+}
+
+/// Helper interface that indicates an identity provider can be federated to using the HTTP POST method.
+///
+/// @author Brian Pontarelli
+@JsonSerializable()
+class SupportsPostBindings {
+
+  SupportsPostBindings();
+
+  factory SupportsPostBindings.fromJson(Map<String, dynamic> json) => _$SupportsPostBindingsFromJson(json);
+  Map<String, dynamic> toJson() => _$SupportsPostBindingsToJson(this);
 }
 
 /// @author Brian Pontarelli
